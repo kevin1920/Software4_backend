@@ -1,7 +1,7 @@
 //importar librerias
 const express = require('express')
 const cors = require('cors')
-//require("./server/keys")
+require("./server/keys")
 
 //inicializar la libreria
 const app = express()
