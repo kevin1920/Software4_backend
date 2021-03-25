@@ -8,7 +8,7 @@ const ServicioPG = require('../services/pg')
  */
 
 let validarInformacion = info => {
-    if(!info.documento || !info.idLugar || !info.idLugar ){
+    if(!info.documento || !info.idLugar ){
         throw {
             ok:false, 
             mensaje:"Todos los campos son obligatorios"
