@@ -5,8 +5,9 @@ const {obtenerFotos} = require('../controllers/fotos')
 /**
  * Endpoint que trae las fotos de un lugar
  */
- router.get('/fotos',(req,res) => {
-    obtenerFotos().then(respuesta => {
+ router.get('/fotos/:id',(req,res) => {
+    let id = req.params.id
+    obtenerFotos(id).then(respuesta => {
         res.send(respuesta.rows)
     }).catch(error => {
         console.log(error)
