@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {obtenerLugarEspecifico,obtenerLugares, obtenerCoordenadas} = require('../controllers/lugares')
+const {obtenerLugarEspecifico,obtenerLugares, obtenerCoordenadas, obtenerDescripcion} = require('../controllers/lugares')
 
 /**
  * Endpoint que trae los lugares 
@@ -35,6 +35,20 @@ router.get('/lugares/:id',(req,res) => {
  router.get('/coordenadas/:id',(req,res) => {
     let id = req.params.id
     obtenerCoordenadas(id).then(respuesta => {
+        res.send(respuesta.rows)
+    }).catch(error => {
+        console.log(error)
+        res.send(error)
+    })
+    
+})
+
+/**
+ * Endpoint que trae las coordenadas de un lugar
+ */
+ router.get('/descripcion/:id',(req,res) => {
+    let id = req.params.id
+    obtenerDescripcion(id).then(respuesta => {
         res.send(respuesta.rows)
     }).catch(error => {
         console.log(error)

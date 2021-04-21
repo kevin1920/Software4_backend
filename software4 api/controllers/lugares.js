@@ -34,4 +34,12 @@ let obtenerCoordenadas = async id => {
     return respuesta;
 }
 
-module.exports = {obtenerLugares,obtenerLugarEspecifico,obtenerCoordenadas}
+let obtenerDescripcion = async id => {
+    let servicio = new ServicioPG()
+    let sql = `select descripcion from lugares where id = $1;`
+    let valores = [id]
+    let respuesta = await servicio.ejecutarSQL(sql,valores)
+    return respuesta;
+}
+
+module.exports = {obtenerLugares,obtenerLugarEspecifico,obtenerCoordenadas, obtenerDescripcion}
